@@ -42,7 +42,7 @@ evalFunctionOnParameterDef <-
 function(x,fun,index=1,...){
     out<-
     lapply(index, function(i)
-        Jmisc:::evalFunctionOnList(fun,generate(x)[[i]])
+        Jmisc::evalFunctionOnList(fun,generate(x)[[i]])
     )
     names(out) <- lapply(index, function(i)
         paste(paste(names(generate(x)[[i]]),

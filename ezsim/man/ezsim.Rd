@@ -54,7 +54,8 @@ ezsim_basic<-ezsim(
     true_value    = function() c(mu, sigma / sqrt(n-1))
 )
 
-## Test whether an ezsim object is valid. Print the result of the test and dont return the name of estimator.
+## Test whether an ezsim object is valid.
+## Print the result of the test and dont return the name of estimator.
 test(ezsim_basic,print_result=TRUE,return_name=FALSE)
 
 ## Summary of an ezsim object
@@ -67,7 +68,8 @@ summary(ezsim_basic,subset=list(estimator='mean_hat',n=c(20,40),sigma=c(1,3)))
 summary(ezsim_basic,simple=FALSE,subset=list(estimator='mean_hat',n=c(20,40),sigma=c(1,3)))
 
 ## Customize the Summary Statistics
-summary(ezsim_basic,stat=c("q25","median","q75"),Q025=quantile(value_of_estimator,0.025),Q975=quantile(value_of_estimator,0.975),subset=list(estimator='mean_hat',n=c(20,40),sigma=c(1,3)))
+summary(ezsim_basic,stat=c("q25","median","q75"),Q025=quantile(value_of_estimator,0.025),
+  Q975=quantile(value_of_estimator,0.975),subset=list(estimator='mean_hat',n=c(20,40),sigma=c(1,3)))
 
 ## Plot an ezsim object
 plot(ezsim_basic)
@@ -80,8 +82,10 @@ plot(ezsim_basic,subset=list(estimator="mean_hat",sigma=c(1,3)),parameters_prior
 
 ## Density Plot
 plot(ezsim_basic,'density')
-plot(ezsim_basic,"density",subset=list(estimator="mean_hat",sigma=3),parameters_priority="n",benchmark=dnorm)
-plot(ezsim_basic,"density",subset=list(estimator="mean_hat",mu=0),parameters_priority="n" ,benchmark=dnorm)
+plot(ezsim_basic,"density",subset=list(estimator="mean_hat",sigma=3),parameters_priority="n",
+  benchmark=dnorm)
+plot(ezsim_basic,"density",subset=list(estimator="mean_hat",mu=0),parameters_priority="n" ,
+  benchmark=dnorm)
 
 ## Plot the summary ezsim
 plot(summary(ezsim_basic,c("q25","q75")))
@@ -92,7 +96,8 @@ plot(summary(ezsim_basic,c("median"),subset=list(estimator='sd_mean_hat')))
 ezsim_ols<-ezsim(
     m             = 100,
     run           = TRUE,
-    display_name  = c(beta_hat='hat(beta)',es='sigma[e]^2',xs='sigma[x]^2',sd_beta_hat='hat(sigma)[hat(beta)]'),
+    display_name  = c(beta_hat='hat(beta)',es='sigma[e]^2',xs='sigma[x]^2',
+	                      sd_beta_hat='hat(sigma)[hat(beta)]'),
     parameter_def = createParDef(selection=list(xs=c(1,3),beta=c(0,2),n=seq(20,80,20),es=c(1,3))),
     dgp           = function(){
                         x<-rnorm(n,0,xs)

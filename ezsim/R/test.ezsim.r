@@ -41,7 +41,7 @@ function(x,return_name=TRUE,print_result=FALSE,...){
 		## test for estimator
 		cat("Testing for estimator...")
 		compute_estimates <- function(i,ezsim_object) {
-			ezsim_object$estimator(Jmisc:::evalFunctionOnList(ezsim_object$dgp,i))
+			ezsim_object$estimator(Jmisc::evalFunctionOnList(ezsim_object$dgp,i))
 		}
 			
 		test_estimates<-
@@ -70,7 +70,7 @@ function(x,return_name=TRUE,print_result=FALSE,...){
 		cat("Testing for true value...")
 		if (is.function(x$true_value)){
 			compute_true_value <- function(i,ezsim_object) {
-				Jmisc:::evalFunctionOnList(ezsim_object$true_value,i)
+				Jmisc::evalFunctionOnList(ezsim_object$true_value,i)
 			}
 
 			test_true_value<-

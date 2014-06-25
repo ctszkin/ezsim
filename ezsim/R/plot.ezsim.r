@@ -43,14 +43,17 @@
 #' 
 #' ## Density Plot
 #' plot(ezsim_basic,'density')
-#' plot(ezsim_basic,"density",subset=list(estimator="mean_hat",sigma=3),parameters_priority="n",benchmark=dnorm)
-#' plot(ezsim_basic,"density",subset=list(estimator="mean_hat",mu=0),parameters_priority="n" ,benchmark=dnorm)
+#' plot(ezsim_basic,"density",subset=list(estimator="mean_hat",sigma=3),parameters_priority="n",
+#'    benchmark=dnorm)
+#' plot(ezsim_basic,"density",subset=list(estimator="mean_hat",mu=0),parameters_priority="n" ,
+#'    benchmark=dnorm)
 #'  
 #' ## example 2
 #' ezsim_ols<-ezsim(
 #'     m             = 100,    
 #'     run           = TRUE,
-#'     display_name  = c(beta_hat='hat(beta)',es='sigma[e]^2',xs='sigma[x]^2',sd_beta_hat='hat(sigma)[hat(beta)]'),
+#'     display_name  = c(beta_hat='hat(beta)',es='sigma[e]^2',xs='sigma[x]^2',
+#'                       sd_beta_hat='hat(sigma)[hat(beta)]'),
 #'     parameter_def = createParDef(selection=list(xs=c(1,3),beta=c(0,2),n=seq(20,80,20),es=c(1,3))),
 #'     dgp           = function(){
 #'                         x<-rnorm(n,0,xs)
@@ -130,7 +133,7 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
         #########
 				my_facet<-
         if (length(other>0)) {
-					facet_grid(createFormula(other), labeller = Jmisc:::label_both_parsed_recode(x$display_name))
+					facet_grid(createFormula(other), labeller = Jmisc::label_both_parsed_recode(x$display_name))
 				}else{
 					NULL
 				}
@@ -160,7 +163,7 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
                 geom_point(aes(y=Median,color='Median'))+
                 
                 scale_colour_manual(name='Summary Statistics',values=c('red','black','blue'))+
-                my_facet + ylab(ylab)+xlab(parse(text=Jmisc:::recode(x_var,from=names(x$display_name),to=x$display_name)))+
+                my_facet + ylab(ylab)+xlab(parse(text=Jmisc::recode(x_var,from=names(x$display_name),to=x$display_name)))+
                 opts(legend.position='bottom', legend.direction='horizontal',title=parse(text=mytitle))      
             }
         )
@@ -201,11 +204,11 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
         other=tail(selection_name$selection_length_greater_one,-1)    
 
         # change name of estimator to display name
-        x$simulation_table$estimator<-factor(Jmisc:::recode(as.character(x$simulation_table$estimator),from=names(x$display_name),to=x$display_name))
+        x$simulation_table$estimator<-factor(Jmisc::recode(as.character(x$simulation_table$estimator),from=names(x$display_name),to=x$display_name))
         
 				my_facet<-
 					if (length(other>0)) {
-						facet_grid(createFormula(other,right=FALSE), labeller = Jmisc:::label_both_parsed_recode(x$display_name))
+						facet_grid(createFormula(other,right=FALSE), labeller = Jmisc::label_both_parsed_recode(x$display_name))
 					}else{
 						NULL
 					}
@@ -267,7 +270,7 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
         if (class(out)=='ggplot')
             print(out)
         else
-            temp<-lapply(out,function(x) {x11(); print(x)} )
+            temp<-lapply(out,function(x) {dev.new(); print(x)} )
         
     }
 }

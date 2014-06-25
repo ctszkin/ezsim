@@ -59,7 +59,7 @@ function(x,parameters_priority,ylab='Summary Statistics',title,pdf_option,return
     
 		my_facet<-
 			if (length(other>0)) {
-				facet_grid(createFormula(other), labeller = Jmisc:::label_both_parsed_recode(display_name))
+				facet_grid(createFormula(other), labeller = Jmisc::label_both_parsed_recode(display_name))
 			}else{
 				NULL
 			}
@@ -97,6 +97,6 @@ function(x,parameters_priority,ylab='Summary Statistics',title,pdf_option,return
         if (class(out)=='ggplot')
             print(out)
         else
-            temp<-lapply(out,function(x) {x11(); print(x)} )
+            temp<-lapply(out,function(x) {dev.new(); print(x)} )
     }
 }

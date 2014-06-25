@@ -61,14 +61,17 @@ plot(ezsim_basic,subset=list(estimator="mean_hat",sigma=c(1,3)),parameters_prior
 
 ## Density Plot
 plot(ezsim_basic,'density')
-plot(ezsim_basic,"density",subset=list(estimator="mean_hat",sigma=3),parameters_priority="n",benchmark=dnorm)
-plot(ezsim_basic,"density",subset=list(estimator="mean_hat",mu=0),parameters_priority="n" ,benchmark=dnorm)
+plot(ezsim_basic,"density",subset=list(estimator="mean_hat",sigma=3),parameters_priority="n",
+   benchmark=dnorm)
+plot(ezsim_basic,"density",subset=list(estimator="mean_hat",mu=0),parameters_priority="n" ,
+   benchmark=dnorm)
 
 ## example 2
 ezsim_ols<-ezsim(
     m             = 100,
     run           = TRUE,
-    display_name  = c(beta_hat='hat(beta)',es='sigma[e]^2',xs='sigma[x]^2',sd_beta_hat='hat(sigma)[hat(beta)]'),
+    display_name  = c(beta_hat='hat(beta)',es='sigma[e]^2',xs='sigma[x]^2',
+                      sd_beta_hat='hat(sigma)[hat(beta)]'),
     parameter_def = createParDef(selection=list(xs=c(1,3),beta=c(0,2),n=seq(20,80,20),es=c(1,3))),
     dgp           = function(){
                         x<-rnorm(n,0,xs)

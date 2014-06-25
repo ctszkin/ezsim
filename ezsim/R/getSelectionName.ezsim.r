@@ -47,7 +47,7 @@ function(x,simple=FALSE,parameters_priority,...){
     if (length(selection_length_one)>0 ){
         selections_value_length_one<-unique(x$simulation_table[selection_length_one])
         
-        subtitle<-paste(paste(Jmisc:::recode(selection_length_one,from=names(x$display_name),to=x$display_name),selections_value_length_one,sep='=='),collapse=',')
+        subtitle<-paste(paste(Jmisc::recode(selection_length_one,from=names(x$display_name),to=x$display_name),selections_value_length_one,sep='=='),collapse=',')
         subtitle<-paste('list(',subtitle,')',sep='')
         
        subtitle<-paste('group(\'(\',',subtitle,',\')\' )')

@@ -41,7 +41,7 @@ createSimulationTable.ezsim<-function(x,...){
 		
 		# compute the true value
 		if (is.function(x$true_value)){
-			true_value <-  data.frame(t(Jmisc:::evalFunctionOnList(x$true_value,j)))
+			true_value <-  data.frame(t(Jmisc::evalFunctionOnList(x$true_value,j)))
 			names(true_value)<-estimators_name
 			true_value <- melt(true_value,measure.vars=estimators_name,variable_name='estimator')
 			names(true_value)[2]<-"value_of_TV"
@@ -51,7 +51,7 @@ createSimulationTable.ezsim<-function(x,...){
 		}
 		
 		par_value <- unlist(j[names(x$parameter_def$selection)])
-		out <- Jmisc:::addCol(out,value=par_value)
+		out <- Jmisc::addCol(out,value=par_value)
 		out
 	}
 	return(x)

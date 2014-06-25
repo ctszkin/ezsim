@@ -39,7 +39,7 @@ run.ezsim <-function(x,...){
 	i=j=NULL
 	compute_simulation<-function(par,ezsim_object,m){
 		parser<-function(i,par,ezsim_object){
-			ezsim_object$estimator(Jmisc:::evalFunctionOnList(ezsim_object$dgp,par))
+			ezsim_object$estimator(Jmisc::evalFunctionOnList(ezsim_object$dgp,par))
 		}
 		
 		out<-

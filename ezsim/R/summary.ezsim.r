@@ -42,7 +42,8 @@
 #' summary(ezsim_basic,simple=FALSE,subset=list(estimator='mean_hat',n=c(20,40),sigma=c(1,3)))
 #' 
 #' ## Customize the Summary Statistics
-#' summary(ezsim_basic,stat=c("q25","median","q75"),Q025=quantile(value_of_estimator,0.025),Q975=quantile(value_of_estimator,0.975),subset=list(estimator='mean_hat',n=c(20,40),sigma=c(1,3)))
+#' summary(ezsim_basic,stat=c("q25","median","q75"),Q025=quantile(value_of_estimator,0.025),
+#'   Q975=quantile(value_of_estimator,0.975),subset=list(estimator='mean_hat',n=c(20,40),sigma=c(1,3)))
 #' }
 
 summary.ezsim <-
@@ -83,7 +84,7 @@ function(object,stat=c('mean','tv','bias','biaspercentage',
                 median='Median=median(value_of_estimator)',
                 q75='Q75=quantile(value_of_estimator,0.75)',
                 max='Max=max(value_of_estimator)',
-                jb_test='JB_test=Jmisc:::JBTest(value_of_estimator)'
+                jb_test='JB_test=Jmisc::JBTest(value_of_estimator)'
             )
         }
 
