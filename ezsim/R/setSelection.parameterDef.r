@@ -10,7 +10,7 @@
 #' @param \dots Variables to be added to a parameterDef object
 #' @return A parameterDef object
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method setSelection parameterDef
+#' @export setSelection
 #' @export
 #' @seealso \code{\link{setSelection.parameterDef}},\code{\link{createParDef}},\code{\link{evalFunctionOnParameterDef}},\code{\link{generate.parameterDef}}
 #' @keywords parameterDef

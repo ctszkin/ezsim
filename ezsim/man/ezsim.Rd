@@ -7,7 +7,7 @@
 ezsim(m, estimator, dgp, parameter_def, true_value = NULL,
   display_name = NULL, estimator_parser = NULL, auto_save = 0,
   parallel = FALSE, number_of_workers = detectCores(), run = TRUE,
-  run_test = TRUE)
+  run_test = TRUE, arg_to_makeCluster = NULL)
 }
 \arguments{
 \item{m}{The number of times you want to simulate.}
@@ -33,6 +33,8 @@ ezsim(m, estimator, dgp, parameter_def, true_value = NULL,
 \item{run}{Whether the simulation will be ran right after the creation.}
 
 \item{run_test}{Whether to do a test before the simulation.}
+
+\item{arg_to_makeCluster}{a list of arguments for makeCluster}
 }
 \value{
 An ezsim object.

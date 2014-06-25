@@ -10,7 +10,7 @@
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @seealso \code{\link{ezsim}}
 #' @note For internal use of ezsim.
-#' @S3method subset ezsim
+#' @export 
 #' @examples        
 #' \dontrun{
 #' ezsim_basic<-ezsim(

@@ -6,7 +6,7 @@
 #' @param x An ezsim object
 #' @param \dots not used
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method run ezsim
+#' @export 
 #' @examples              
 #' \dontrun{
 #' ezsim_basic<-ezsim(
@@ -30,9 +30,21 @@ run.ezsim <-function(x,...){
 	create_cluster_flag <- FALSE
 	
 	if (x$parallel & is.null(x$cluster)){ 
-		x$cluster<-makeCluster(x$number_of_workers)
+		x$cluster <- 
+			if (! is.null(x$arg_to_makeCluster)){
+				arg_to_makeCluster = c(spec=x$number_of_workers, x$arg_to_makeCluster)
+				do.call(makeCluster, arg_to_makeCluster)
+			} else {
+				makeCluster(x$number_of_workers)
+			}
+		clusterSetRNGStream(x$cluster)
 		create_cluster_flag<-TRUE
 	}
+
+	# if (x$parallel & is.null(x$cluster)){ 
+	# 	x$cluster<-makeCluster(x$number_of_workers)
+	# 	create_cluster_flag<-TRUE
+	# }
 	
 	##  A local function to conduct simulation
 	## fix parameter, repeat for m times

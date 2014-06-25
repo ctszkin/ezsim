@@ -14,7 +14,7 @@
 #' @param \dots Furhter summary statistics. Given in the form stat_name=stat. For example, Mean=mean
 #' @return A summary.ezsim object
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method summary ezsim
+#' @export 
 #' @seealso \code{\link{ezsim}}, \code{\link{plot.summary.ezsim}}, \code{\link{getSelectionName.summary.ezsim}}
 #' @keywords post-simulation
 #' @examples        

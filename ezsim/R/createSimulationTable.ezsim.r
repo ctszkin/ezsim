@@ -4,8 +4,7 @@
 #' @title createSimulationTable
 #' @param x an ezsim object
 #' @param \dots not used 
-#' @method createSimulationTable ezsim
-#' @S3method createSimulationTable ezsim
+#' @export 
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com} 
 #' @keywords internal
 createSimulationTable.ezsim<-function(x,...){

@@ -6,7 +6,7 @@
 #' @param x A parameters Object
 #' @param \dots unused
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method print parameters
+#' @export
 #' @seealso \code{\link{parameterDef}}
 
 print.parameters <-

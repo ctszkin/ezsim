@@ -13,7 +13,7 @@
 #' @param \dots unused
 #' @return Optional: a ggplot2 object
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method plot summary.ezsim
+#' @export plot summary.ezsim
 #' @seealso \code{\link{ezsim}},\code{\link{summary.ezsim}}
 #' @examples       
 #' \dontrun{
@@ -79,10 +79,15 @@ function(x,parameters_priority,ylab='Summary Statistics',title,pdf_option,return
             ggplot(data=summ, aes_string(linetype='stat',color='estimator', x=x_var,y='value'))+scale_colour_discrete(name='Estimators',breaks=unique(summ$estimator),labels=parse(text=unique(summ$estimator)))+scale_linetype(name='Summary Statistics',breaks=unique(summ$stat),labels=parse(text=unique(summ$stat)))
         }
         
-    out <- out+geom_line()+geom_point() + my_facet+ylab(ylab)+xlab(parse(text=recode(x_var,from=names(display_name),to=display_name)))+opts(legend.position='bottom', legend.direction='horizontal')
-    
-    out<-out+opts(title=parse(text=title))
-    
+    out <- out+
+            geom_line()+
+            geom_point() + 
+            my_facet+
+            ylab(ylab)+
+            xlab(parse(text=recode(x_var,from=names(display_name),to=display_name)))+
+            labs(title=parse(text=title))+
+            theme(legend.position='bottom', legend.direction='horizontal')
+        
     if (!missing(pdf_option)){
         do.call(pdf,pdf_option)
         if (class(out)=='ggplot')

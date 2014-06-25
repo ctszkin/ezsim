@@ -8,7 +8,7 @@
 #' @param \dots unused
 #' @return \item{other_parameters}{A list of other_parameters} \item{scalar_parameters}{A data.frame of scalar_parameters} \item{parameter_list}{A list of all parameters}
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method generate parameterDef
+#' @export
 #' @seealso \code{\link{setBanker.parameterDef}}, \code{\link{setSelection.parameterDef}}, \code{\link{evalFunctionOnParameterDef}}, \code{\link{generate.parameterDef}}
 #' @examples         
 #' par_def1<-createParDef(selection=list(mean=1,sd=2,n=seq(10,50,10)))

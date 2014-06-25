@@ -5,11 +5,12 @@
 #' @method merge ezsim
 #' @param x A ezsim to merge with 
 #' @param y A ezsim to merge with
+#' @param ... unused
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method run ezsim
+#' @export 
 #' @seealso \code{\link{ezsim}}
 
-merge.ezsim<-function(x,y){		
+merge.ezsim<-function(x,y,...){		
 	# Check whether two ezsim objects are the same
 	check_cond<-
 	foreach (i = c('estimator','true_value','dgp','display_name'),.combine=c,.final=all) %do% {

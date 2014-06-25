@@ -17,7 +17,7 @@
 #' @param \dots unused
 #' @return Optional: a list of ggplot2 object
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method plot ezsim
+#' @export plot ezsim
 #' @seealso \code{\link{ezsim}},\code{\link{summary.ezsim}}, \code{\link{plot.summary.ezsim}},
 #' @examples       
 #' \dontrun{
@@ -164,7 +164,8 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
                 
                 scale_colour_manual(name='Summary Statistics',values=c('red','black','blue'))+
                 my_facet + ylab(ylab)+xlab(parse(text=Jmisc::recode(x_var,from=names(x$display_name),to=x$display_name)))+
-                opts(legend.position='bottom', legend.direction='horizontal',title=parse(text=mytitle))      
+                theme(legend.position='bottom', legend.direction='horizontal') +
+                labs(title = parse(text=mytitle))     
             }
         )
     }
@@ -244,7 +245,8 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
             my_facet + 
             ylab(ylab) + 
             xlab(parse(text=as.character(i))) +
-            opts(legend.position='bottom', legend.direction='horizontal',title=parse(text=mytitle))
+            theme(legend.position='bottom', legend.direction='horizontal') +
+            labs(title=parse(text=mytitle))
           
             
             

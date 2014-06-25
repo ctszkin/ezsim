@@ -5,10 +5,11 @@
 #' @method merge parameterDef
 #' @param x A parameterDef to merge with 
 #' @param y A parameterDef to merge with
+#' @param ... unused
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method run ezsim
+#' @export 
 #' @seealso \code{\link{createParDef}}, \code{\link{createParDef}}
-merge.parameterDef<-function(x,y){
+merge.parameterDef<-function(x,y,...){
 	if (class(y)!='parameterDef')
 		stop('y must be an parameterDef object')
 		

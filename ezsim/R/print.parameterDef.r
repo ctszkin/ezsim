@@ -6,7 +6,7 @@
 #' @param x A parameterDef Object
 #' @param \dots unused
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method print parameterDef
+#' @export
 #' @seealso \code{\link{createParDef}}
 
 print.parameterDef <-

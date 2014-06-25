@@ -10,7 +10,7 @@
 #' @return Optional: names of estimator.
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @seealso \code{\link{ezsim}}
-#' @S3method test ezsim
+#' @export 
 #' @examples         
 #' \dontrun{ 
 #' ezsim_basic<-ezsim(
@@ -33,9 +33,17 @@ function(x,return_name=TRUE,print_result=FALSE,...){
 	create_cluster_flag <- FALSE
 	
 	if (x$parallel & is.null(x$cluster)){ 
-		x$cluster<-makeCluster(x$number_of_workers)
+		x$cluster <- 
+			if (! is.null(x$arg_to_makeCluster)){
+				arg_to_makeCluster = c(spec=x$number_of_workers, x$arg_to_makeCluster)
+				do.call(makeCluster, arg_to_makeCluster)
+			} else {
+				makeCluster(x$number_of_workers)
+			}
+		clusterSetRNGStream(x$cluster)
 		create_cluster_flag<-TRUE
 	}
+	
 	i=NULL
 	tryCatch({
 		## test for estimator

@@ -1,0 +1,17 @@
+Version 0.5.0
+Date 29/06/2011
+Initial version
+
+Version 0.5.1
+Date 29/06/2011
+Fixed some bugs and updated the vignette.
+
+Version 0.5.2
+Date 12/11/2011
+Bug fixed. 
+
+Version 0.5.3
+Date 29/06/2011
+updated for ggplot2 0.9
+use parallel packages
+renamed some functions

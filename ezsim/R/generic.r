@@ -10,7 +10,7 @@
 #' @seealso \code{\link{createSimulationTable.ezsim}} 
 createSimulationTable <-
 function(x,...){
-    UseMethod("createSimulationTable")
+    UseMethod("createSimulationTable",x)
 }
 
 #' Generic function
@@ -25,7 +25,7 @@ function(x,...){
 #' @seealso \code{\link{generate.parameterDef}}
 generate <-
 function(x,...){
-    UseMethod("generate")
+    UseMethod("generate",x)
 }
 
 #' Generic function
@@ -40,7 +40,7 @@ function(x,...){
 #' @seealso \code{\link{setBanker.parameterDef}}
 setBanker <-
 function(x,...){
-    UseMethod("setBanker")
+    UseMethod("setBanker",x)
 }
 
 #' Generic function
@@ -56,7 +56,7 @@ function(x,...){
 
 run <-
 function(x,...){
-    UseMethod("run")
+    UseMethod("run",x)
 }
 #' Generic function
 #' @name getSelectionName
@@ -71,7 +71,7 @@ function(x,...){
 
 getSelectionName <-
 function(x,...){
-    UseMethod("getSelectionName")
+    UseMethod("getSelectionName",x)
 }
 #' Generic function
 #' @name setBanker
@@ -86,7 +86,7 @@ function(x,...){
 
 setBanker <-
 function(x,...){
-    UseMethod("setBanker")
+    UseMethod("setBanker",x)
 }
 
 #' Generic function
@@ -101,7 +101,7 @@ function(x,...){
 #' @seealso \code{\link{setSelection.parameterDef}}
 setSelection <-
 function(x,...){
-    UseMethod("setSelection")
+    UseMethod("setSelection",x)
 }
 
 #' Generic function
@@ -116,7 +116,7 @@ function(x,...){
 #' @seealso \code{\link{test.ezsim}}
 test <-
 function(x,...){
-    UseMethod("test")
+    UseMethod("test",x)
 }
 
 #' Generic function
@@ -130,6 +130,6 @@ function(x,...){
 #' @export
 createSimulationTable <-
 function(x,...){
-    UseMethod("createSimulationTable")
+    UseMethod("createSimulationTable",x)
 }
 

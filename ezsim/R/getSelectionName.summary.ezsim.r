@@ -9,7 +9,7 @@
 #' @param \dots unused
 #' @return Names of selection parameters. 
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method getSelectionName summary.ezsim
+#' @export 
 #' @note For internal use of ezsim.
 #' @seealso \code{\link{getSelectionName.ezsim}}
 #' keywords internal

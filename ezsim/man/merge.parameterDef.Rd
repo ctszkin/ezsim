@@ -3,12 +3,14 @@
 \alias{merge.parameterDef}
 \title{Merge two parameterDef objects}
 \usage{
-\method{merge}{parameterDef}(x, y)
+\method{merge}{parameterDef}(x, y, ...)
 }
 \arguments{
 \item{x}{A parameterDef to merge with}
 
 \item{y}{A parameterDef to merge with}
+
+\item{...}{unused}
 }
 \description{
 Merge two parameterDef objects. 'others' of two parameterDef objects must be the same. 'scalars' of two parameterDef objects must have same name and the value must not overlap.

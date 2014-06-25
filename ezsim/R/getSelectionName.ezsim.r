@@ -9,7 +9,7 @@
 #' @param \dots unused
 #' @return \item{selection_length_greater_one}{ Name of selection parameters with more than one elements} \item{selection_length_one}{Name of selection parameters with only one element} \item{subtitle}{subtitle for fixed selection parameters}
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method getSelectionName ezsim
+#' @export
 #' @keywords internal
 #' @note For internal use of ezsim.
 #' @seealso \code{\link{getSelectionName.summary.ezsim}}

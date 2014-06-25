@@ -7,7 +7,7 @@
 #' @param digits Number of digits the data will be rounded to.
 #' @param \dots unused
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method print summary.ezsim
+#' @export 
 #' @seealso \code{\link{summary.ezsim}}
 
 print.summary.ezsim <-

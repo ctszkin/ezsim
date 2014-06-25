@@ -15,6 +15,7 @@
 #' @param number_of_workers  How many worker will be used in the simulation. Default is detectCores().
 #' @param run Whether the simulation will be ran right after the creation.
 #' @param run_test Whether to do a test before the simulation.
+#' @param arg_to_makeCluster a list of arguments for makeCluster 
 #' @return An ezsim object.
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @seealso \code{\link{createParDef}} \code{\link{setBanker}},\code{\link{setSelection}} \code{\link{summary.ezsim}}
@@ -127,9 +128,9 @@
 #' }
 
 ezsim <-
-function(m,estimator,dgp,parameter_def,true_value=NULL,display_name=NULL,estimator_parser=NULL,auto_save=0,parallel=FALSE,number_of_workers=detectCores(),run=TRUE,run_test=TRUE){
+function(m,estimator,dgp,parameter_def,true_value=NULL,display_name=NULL,estimator_parser=NULL,auto_save=0,parallel=FALSE,number_of_workers=detectCores(),run=TRUE,run_test=TRUE, arg_to_makeCluster=NULL){
 	
-	out<-list(m=m,estimator=estimator,true_value=true_value,dgp=dgp,parameter_def=parameter_def,display_name=display_name,estimator_parser=estimator_parser,auto_save=auto_save,parallel=parallel,number_of_workers=number_of_workers)
+	out<-list(m=m,estimator=estimator,true_value=true_value,dgp=dgp,parameter_def=parameter_def,display_name=display_name,estimator_parser=estimator_parser,auto_save=auto_save,parallel=parallel,number_of_workers=number_of_workers,arg_to_makeCluster=arg_to_makeCluster)
 	class(out)<-"ezsim"
 	
 	# check estimator_parser
@@ -144,8 +145,16 @@ function(m,estimator,dgp,parameter_def,true_value=NULL,display_name=NULL,estimat
 	}
 	
 	## create workers for parallel computing
-	if (out$parallel & (run | run_test))
-		out$cluster<-makeCluster(out$number_of_workers)
+	if (out$parallel & (run | run_test)){
+		out$cluster <- 
+			if (! is.null(arg_to_makeCluster)){
+				arg_to_makeCluster = c(spec=number_of_workers, arg_to_makeCluster)
+				do.call(makeCluster, arg_to_makeCluster)
+			} else {
+				makeCluster(out$number_of_workers)
+			}
+		clusterSetRNGStream(out$cluster)
+	}
 
 	## using tryCatch to make sure the cluster is stopped and removed
 	tryCatch({

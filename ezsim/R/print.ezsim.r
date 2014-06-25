@@ -7,7 +7,7 @@
 #' @param \dots unused
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @seealso \code{\link{ezsim}}
-#' @S3method print ezsim 
+#' @export  
 print.ezsim <-
 function(x,...){
     cat("Number of Simulation :",x$m ,"\n")
