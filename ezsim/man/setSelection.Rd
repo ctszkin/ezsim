@@ -1,10 +1,10 @@
-\name{getScalarsName}
+\name{setSelection}
 \title{Generic function}
-\usage{getSelectionName(x, ...)}
+\usage{setSelection(x, ...)}
 \description{Generic function}
-\alias{getScalarsName}
+\alias{setSelection}
 \author{TszKin Julian Chan \email{ctszkin@gmail.com}}
 \keyword{internal}
-\seealso{\code{\link{getScalarsName.ezsim}}, \code{\link{getScalarsName.summary.ezsim}}}
+\seealso{\code{\link{setSelection.parameterDef}}}
 \arguments{\item{x}{Object}
 \item{\dots}{Further arguments}}

@@ -5,6 +5,7 @@
 \alias{createFormula}
 \value{Formula}
 \author{TszKin Julian Chan \email{ctszkin@gmail.com}}
+\keyword{internal}
 \note{For internal use of ezsim. It aims at creating formula for facets in \pkg{ggplot2}.}
 \seealso{\code{\link{formula}}}
 \arguments{\item{x}{A vector of character}

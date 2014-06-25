@@ -3,7 +3,7 @@
 \usage{\method{plot}{summary.ezsim}(x,parameters_priority,ylab='Summary Statistics',title,pdf_option,...)}
 \description{Plot the summary statistics for several estimators in the same plot. Summary statistics abd estimators are separated by colour and linetype.
 The longest scalars parameter will be the x-variable of the plot. The rest of the scalars parameters will be become the facets of the plot (see \pkg{ggplot2}).
-others parameters will not be shown in the graph.}
+banker parameters will not be shown in the graph.}
 \alias{plot.summary.ezsim}
 \value{Optional: a ggplot2 object}
 \author{TszKin Julian Chan \email{ctszkin@gmail.com}}

@@ -7,7 +7,7 @@
 \alias{summary.ezsim}
 \value{A summary.ezsim object}
 \author{TszKin Julian Chan \email{ctszkin@gmail.com}}
-\seealso{\code{\link{ezsim}}, \code{\link{plot.summary.ezsim}}, \code{\link{getScalarsName.summary.ezsim}}}
+\seealso{\code{\link{ezsim}}, \code{\link{plot.summary.ezsim}}, \code{\link{getSelectionName.summary.ezsim}}}
 \keyword{post-simulation}
 \arguments{\item{object}{An ezsim object}
 \item{stat}{Some preset summary statistics. Included,  \code{c('mean','tv','bias','biaspercentage','sd','rmse','min','q25','median','q75','max','jb_test')}}

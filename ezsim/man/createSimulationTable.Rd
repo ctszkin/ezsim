@@ -1,9 +1,10 @@
-\name{setScalars}
+\name{createSimulationTable}
 \title{Generic function}
-\usage{setScalars(x, ...)}
+\usage{createSimulationTable(x, ...)}
 \description{Generic function}
-\alias{setScalars}
+\alias{createSimulationTable}
 \author{TszKin Julian Chan \email{ctszkin@gmail.com}}
-\seealso{\code{\link{setScalars.parameterDef}}}
+\keyword{internal}
+\seealso{\code{\link{createSimulationTable.ezsim}}}
 \arguments{\item{x}{Object}
 \item{\dots}{Further arguments}}

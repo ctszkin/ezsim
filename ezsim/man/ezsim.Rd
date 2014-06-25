@@ -1,7 +1,8 @@
 \name{ezsim}
 \title{Create an ezsim Object.}
-\usage{ezsim(m, estimator, dgp, parameter_def, true_value=NA, run=TRUE,
-    core=1, display_name, packages)}
+\usage{ezsim(m, estimator, dgp, parameter_def, true_value, display_name,
+    estimator_parser, auto_save=0, parallel=TRUE,
+    number_of_workers=detectCores(), run=TRUE, run_test=TRUE)}
 \description{Create an ezsim object from 4 important arguments(dgp,estimator,true,parameter_def).}
 \alias{ezsim}
 \alias{dgp}
@@ -16,7 +17,8 @@
 \item{run}{Whether the simulation will be ran right after the creation.}
 \item{core}{numeric. How many core will be used in the simulation. The parallel computing is implmented by foreach and doSNOW.}
 \item{display_name}{Display name for the name of parameter and estimator. see \code{\link{plotmath}} for details.}
-\item{packages}{character vector of packages that the estiamtor depend on. Ignored when core=1. See \code{\link{foreach}} for details.}}
+\item{packages}{character vector of packages that the estiamtor depend on. Ignored when core=1. See \code{\link{foreach}} for details.}
+\item{auto_save}{Number of auto save during the simulation.}}
 \examples{\dontrun{
 ## Example 1
 ezsim_basic<-ezsim(

@@ -4,7 +4,7 @@
     subset, parameters_priority, return_print=FALSE, ylab, title,
     pdf_option, null_hypothesis, benchmark, ...)}
 \description{There are 3 different modes to plot an ezsim object. \code{'summary'}, \code{'density'} and \code{'powerfun'} plot the summary statistics,density function and power function of an ezsim object respectively.\cr\cr
-\code{'summary'}: The y-variable of the plot are summary statistics of the estimator. Two confidence bounds will be shaded in the plot. 25\% and 75\% percentile will form a 50\% confidence bound. Similarly, 2.5\% and 97.5\% percentile will form a 95\% confidence bound.  Each plot have only one estimator. The scalars parameter has the longest length will be the x-variable of the plot. The rest of the scalars parameters will be become the facets of the plot (see \pkg{ggplot2}). \cr\cr \code{density} : Density plot of the estimator. Each plot have only one estimator. scalars parameter will appear as different colour and in different facets.\cr\cr \code{powerfun} : Plot the power function of test(s). Estimators have to be a test (value = 1 if rejecting the null hypothesis, value = 0 if fail to reject the null hypothesis) others parameters will not be shown in the graph.}
+\code{'summary'}: The y-variable of the plot are summary statistics of the estimator. Two confidence bounds will be shaded in the plot. 25\% and 75\% percentile will form a 50\% confidence bound. Similarly, 2.5\% and 97.5\% percentile will form a 95\% confidence bound.  Each plot have only one estimator. The scalars parameter has the longest length will be the x-variable of the plot. The rest of the selection parameters will be become the facets of the plot (see \pkg{ggplot2}). \cr\cr \code{density} : Density plot of the estimator. Each plot have only one estimator. selection parameter will appear as different colour and in different facets.\cr\cr \code{powerfun} : Plot the power function of test(s). Estimators have to be a test (value = 1 if rejecting the null hypothesis, value = 0 if fail to reject the null hypothesis) banker parameters will not be shown in the graph.}
 \alias{plot.ezsim}
 \value{Optional: a list of ggplot2 object}
 \author{TszKin Julian Chan \email{ctszkin@gmail.com}}
@@ -54,7 +54,7 @@ m             = 100,
 run           = TRUE,
 core          = 1,
 display_name  = c(beta_hat='hat(beta)',es='sigma[e]^2',xs='sigma[x]^2',sd_beta_hat='hat(sigma)[hat(beta)]'),
-parameter_def = createParDef(scalars=list(xs=c(1,3),beta=c(0,2),n=seq(20,80,20),es=c(1,3))),
+parameter_def = createParDef(selection=list(xs=c(1,3),beta=c(0,2),n=seq(20,80,20),es=c(1,3))),
 dgp           = function(){
 x<-rnorm(n,0,xs)
 e<-rnorm(n,0,es)
@@ -80,7 +80,7 @@ plot(ezsim_ols,'density',subset=list(es=1,xs=1))
 ezsim_powerfun<-ezsim(
 run           = TRUE,   
 m             = 100,
-parameter_def = createParDef(scalars=list(xs=1,n=50,es=c(1,5),b=seq(-1,1,0.1))),
+parameter_def = createParDef(selection=list(xs=1,n=50,es=c(1,5),b=seq(-1,1,0.1))),
 display_name  = c(b='beta',es='sigma[e]^2',xs='sigma[x]^2'),
 dgp           = function(){
 x<-rnorm(n,0,xs)

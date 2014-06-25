@@ -1,9 +1,10 @@
-\name{setOthers}
+\name{setBanker}
 \title{Generic function}
-\usage{setOthers(x, ...)}
+\usage{setBanker(x, ...)}
 \description{Generic function}
-\alias{setOthers}
+\alias{setBanker}
 \author{TszKin Julian Chan \email{ctszkin@gmail.com}}
-\seealso{\code{\link{setOthers.parameterDef}}}
+\keyword{internal}
+\seealso{\code{\link{setBanker.parameterDef}}}
 \arguments{\item{x}{Object}
 \item{\dots}{Further arguments}}

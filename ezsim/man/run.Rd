@@ -4,6 +4,7 @@
 \description{Generic function}
 \alias{run}
 \author{TszKin Julian Chan \email{ctszkin@gmail.com}}
+\keyword{internal}
 \seealso{\code{\link{run.ezsim}}}
 \arguments{\item{x}{Object}
 \item{\dots}{Further arguments}}

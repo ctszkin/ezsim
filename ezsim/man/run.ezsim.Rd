@@ -1,11 +1,13 @@
 \name{run.ezsim}
 \title{Run the Simulation}
-\usage{\method{run}{ezsim} (x, core, ...)}
+\usage{\method{run}{ezsim} (x)}
 \description{Run the Simulation of an ezsim object. The simulation result is store into the ezsim object in the argument directly, reassignment is not needed.}
 \alias{run.ezsim}
 \author{TszKin Julian Chan \email{ctszkin@gmail.com}}
 \arguments{\item{x}{An ezsim object}
-\item{core}{Number of core to be used in parallel computing. if missing, the value in ezsim object will be used.}
+\item{core}{Number of core to be used in parallel computing. Default is 1.}
+\item{auto_save}{Number of auto save during the simulation.}
+\item{create_worker}{If TRUE, create worker for parallelization automatically.}
 \item{\dots}{unused}}
 \examples{\dontrun{
 ezsim_basic<-ezsim(
