@@ -8,10 +8,6 @@
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @S3method run ezsim
 #' @seealso \code{\link{ezsim}}
-#' @examples
-#' \dontrun{
-    #some code here        
-#' }
 
 merge.ezsim<-function(x,y){		
 	# Check whether two ezsim objects are the same
@@ -28,6 +24,7 @@ merge.ezsim<-function(x,y){
 		out<-x
 		out$m<-x$m+y$m
 		
+		i=j=NULL
 		## merge the simulation_result
 		out$simulation_result<-
 		foreach (i = x$simulation_result, j = y$simulation_result ) %do% {

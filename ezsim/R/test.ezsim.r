@@ -11,7 +11,8 @@
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @seealso \code{\link{ezsim}}
 #' @S3method test ezsim
-#' @examples          
+#' @examples         
+#' \dontrun{ 
 #' ezsim_basic<-ezsim(
 #'     m             = 100,
 #'     run           = FALSE,
@@ -24,7 +25,7 @@
 #' )
 #' 
 #' test(ezsim_basic,print_result=TRUE)
-
+#' }
 test.ezsim <-
 function(x,return_name=TRUE,print_result=FALSE,...){
 	parameter_list <- generate(x$parameter_def)
@@ -35,6 +36,7 @@ function(x,return_name=TRUE,print_result=FALSE,...){
 		x$cluster<-makeCluster(x$number_of_workers)
 		create_cluster_flag<-TRUE
 	}
+	i=NULL
 	tryCatch({
 		## test for estimator
 		cat("Testing for estimator...")

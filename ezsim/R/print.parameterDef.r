@@ -12,7 +12,7 @@
 print.parameterDef <-
 function(x,...){
     cat("Selection Parameters:\n")
-    print(x$selections)
+    print(x$selection)
     cat("\n")
     cat("Banker Parameters:\n")
     print(x$banker)

@@ -23,7 +23,7 @@
 #'                                  sd_mean_hat=sd(x)/sqrt(length(x)-1)),
 #'     true_value    = function() c(mu, sigma / sqrt(n-1))
 #' )
-#' subset(ezsim_basic,subset=list(estimator='mean_hat',mu=0,n=c(20,40)))$sim
+#' subset(ezsim_basic,subset=list(estimator='mean_hat',mu=0,n=c(20,40)))
 #' }
   
 subset.ezsim<-

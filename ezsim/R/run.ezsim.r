@@ -4,10 +4,7 @@
 #' @title Run the Simulation
 #' @method run ezsim
 #' @param x An ezsim object
-#' @param core Number of core to be used in parallel computing. Default is 1.
-#' @param auto_save Number of auto save during the simulation.
-#' @param create_worker If TRUE, create worker for parallelization automatically.
-#' @param \dots unused
+#' @param \dots not used
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @S3method run ezsim
 #' @examples              
@@ -25,7 +22,7 @@
 #' run(ezsim_basic)
 #' }
 
-run.ezsim <-function(x){
+run.ezsim <-function(x,...){
 	x$parameter_list <- generate(x$parameter_def)
 	## TODO tryCatch
 	## TODO flexible way to store time used
@@ -39,9 +36,9 @@ run.ezsim <-function(x){
 	
 	##  A local function to conduct simulation
 	## fix parameter, repeat for m times
+	i=j=NULL
 	compute_simulation<-function(par,ezsim_object,m){
 		parser<-function(i,par,ezsim_object){
-			ezsim_object$estimator(Jmisc:::evalFunctionOnList(ezsim_object$dgp,par))
 			ezsim_object$estimator(Jmisc:::evalFunctionOnList(ezsim_object$dgp,par))
 		}
 		

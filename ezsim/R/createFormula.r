@@ -9,12 +9,15 @@
 #' @keywords internal
 #' @note For internal use of ezsim. It aims at creating formula for facets in \pkg{ggplot2}.
 #' @seealso \code{\link{formula}}
-#' @examples      
+#' @export
+#' @examples
+#' \dontrun{  
 #' createFormula(letters[1])  ## . ~ a
 #' createFormula(letters[1],right=FALSE)  ## a ~ .
 #' createFormula(letters[1:3])  ## c ~ a + b
 #' createFormula(letters[1:4])  ## c + d ~ a + b
 #' createFormula(letters[1:4],right=FALSE) ## a + b ~ c + d
+#' }
 createFormula <-
 function(x,right=TRUE){
     f<-'.~.'

@@ -5,6 +5,7 @@
 #' @param x Object
 #' @param \dots Further arguments
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
+#' @export
 #' @keywords internal
 #' @seealso \code{\link{createSimulationTable.ezsim}} 
 createSimulationTable <-
@@ -19,6 +20,7 @@ function(x,...){
 #' @param x Object
 #' @param \dots Further arguments
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
+#' @export
 #' @keywords internal
 #' @seealso \code{\link{generate.parameterDef}}
 generate <-
@@ -33,6 +35,7 @@ function(x,...){
 #' @param x Object
 #' @param \dots Further arguments
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
+#' @export
 #' @keywords internal
 #' @seealso \code{\link{setBanker.parameterDef}}
 setBanker <-
@@ -47,6 +50,7 @@ function(x,...){
 #' @param x Object
 #' @param \dots Further arguments
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
+#' @export
 #' @keywords internal
 #' @seealso \code{\link{run.ezsim}}
 
@@ -55,14 +59,15 @@ function(x,...){
     UseMethod("run")
 }
 #' Generic function
-#' @name getScalarsName
-#' @aliases getScalarsName
+#' @name getSelectionName
+#' @aliases getSelectionName
 #' @title Generic function
 #' @param x Object
 #' @param \dots Further arguments
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
+#' @export
 #' @keywords internal
-#' @seealso \code{\link{getScalarsName.ezsim}}, \code{\link{getScalarsName.summary.ezsim}}
+#' @seealso \code{\link{getSelectionName.ezsim}}, \code{\link{getSelectionName.summary.ezsim}}
 
 getSelectionName <-
 function(x,...){
@@ -75,6 +80,7 @@ function(x,...){
 #' @param x Object
 #' @param \dots Further arguments
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
+#' @export
 #' @keywords internal
 #' @seealso \code{\link{setBanker.parameterDef}}
 
@@ -91,6 +97,7 @@ function(x,...){
 #' @param \dots Further arguments
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @keywords internal
+#' @export
 #' @seealso \code{\link{setSelection.parameterDef}}
 setSelection <-
 function(x,...){
@@ -104,10 +111,25 @@ function(x,...){
 #' @param x Object
 #' @param \dots Further arguments
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
+#' @keywords internal
 #' @export
 #' @seealso \code{\link{test.ezsim}}
 test <-
 function(x,...){
     UseMethod("test")
+}
+
+#' Generic function
+#' @name createSimulationTable
+#' @aliases createSimulationTable
+#' @title Generic function
+#' @param x Object
+#' @param \dots Further arguments
+#' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
+#' @keywords internal
+#' @export
+createSimulationTable <-
+function(x,...){
+    UseMethod("createSimulationTable")
 }
 

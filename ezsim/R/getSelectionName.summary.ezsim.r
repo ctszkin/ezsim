@@ -1,23 +1,23 @@
 #' Get names of selections parameters from an summary.ezsim object.
-#' @name getselectionName.summary.ezsim
-#' @aliases getselectionName.summary.ezsim
+#' @name getSelectionName.summary.ezsim
+#' @aliases getSelectionName.summary.ezsim
 #' @title Get Names of selection Parameters.
-#' @usage \method{getselectionName}{summary.ezsim}(x,simple=FALSE,parameters_priority,...)
+#' @usage \method{getSelectionName}{summary.ezsim}(x,simple=FALSE,parameters_priority,...)
 #' @param x an summary.ezsim object
 #' @param simple If true, return only the name of selection parameters. If False, split the selection into two groups, one with fixed value, one with varied value. Also, subtitle is returned.
 #' @param parameters_priority Priority in sorting parameters.
 #' @param \dots unused
 #' @return Names of selection parameters. 
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @S3method getselectionName summary.ezsim
+#' @S3method getSelectionName summary.ezsim
 #' @note For internal use of ezsim.
-#' @seealso \code{\link{getselectionName.ezsim}}
+#' @seealso \code{\link{getSelectionName.ezsim}}
+#' keywords internal
 #' @examples       
 #' \dontrun{
 #' ezsim_basic<-ezsim(
 #'     m             = 100,
 #'     run           = TRUE,
-#'     core          = 1,
 #'     display_name  = c(mean_hat="hat(mu)",sd_mean_hat="hat(sigma[hat(mu)])"),
 #'     parameter_def = createParDef(list(n=seq(20,80,20),mu=c(0,2),sigma=c(1,3,5))),
 #'     dgp           = function() rnorm(n,mu,sigma),
@@ -26,8 +26,8 @@
 #'     true_value    = function() c(mu, sigma / sqrt(n-1))
 #' )
 #' 
-#' getselectionName(ezsim_basic)
-#' getselectionName(summary(ezsim_basic))
+#' getSelectionName(ezsim_basic)
+#' getSelectionName(summary(ezsim_basic))
 #' }
 
 getSelectionName.summary.ezsim<-

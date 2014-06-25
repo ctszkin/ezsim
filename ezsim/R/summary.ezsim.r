@@ -22,7 +22,6 @@
 #' ezsim_basic<-ezsim(
 #'     m             = 100,
 #'     run           = TRUE,
-#'     core          = 1,
 #'     display_name  = c(mean_hat="hat(mu)",sd_mean_hat="hat(sigma[hat(mu)])"),
 #'     parameter_def = createParDef(list(n=seq(20,80,20),mu=c(0,2),sigma=c(1,3,5))),
 #'     dgp           = function() rnorm(n,mu,sigma),
@@ -32,8 +31,6 @@
 #' )
 #' 
 #' 
-#' ## Subset of an ezsim object.
-#' subset(ezsim_basic,subset=list(estimator='mean_hat',mu=0,n=c(20,40)))
 #' 
 #' ## Summary of an ezsim object
 #' summary(ezsim_basic)

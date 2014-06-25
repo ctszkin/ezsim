@@ -11,13 +11,12 @@
 #' @return A parameterDef object
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @export
-#' @seealso \code{\link{setOthers.parameterDef}},\code{\link{setScalars.parameterDef}},\code{\link{evalFunctionOnParameterDef}},\code{\link{generate.parameterDef}}
-#' @keywords parameterDef
+#' @seealso \code{\link{setBanker.parameterDef}},\code{\link{setSelection.parameterDef}},\code{\link{evalFunctionOnParameterDef}},\code{\link{generate.parameterDef}}
 #' @examples       
-#' par_def1<-createParDef(scalar=list(mean=1,sd=2,n=seq(10,50,10)))
+#' par_def1<-createParDef(selection=list(mean=1,sd=2,n=seq(10,50,10)))
 #' 
 #' par_def2<-createParDef()
-#' setScalars(par_def2,mean=1,sd=2,n=seq(10,50,10))
+#' setSelection(par_def2,mean=1,sd=2,n=seq(10,50,10))
 #' 
 #' identical(par_def1,par_def2)
 #' 

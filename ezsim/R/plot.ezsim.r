@@ -19,14 +19,12 @@
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @S3method plot ezsim
 #' @seealso \code{\link{ezsim}},\code{\link{summary.ezsim}}, \code{\link{plot.summary.ezsim}},
-#' @keywords post-simulation
 #' @examples       
 #' \dontrun{
 #' ## example 1
 #' ezsim_basic<-ezsim(
 #'     m             = 100,
 #'     run           = TRUE,
-#'     core          = 1,
 #'     display_name  = c(mean_hat="hat(mu)",sd_mean_hat="hat(sigma[hat(mu)])"),
 #'     parameter_def = createParDef(list(n=seq(20,80,20),mu=c(0,2),sigma=c(1,3,5))),
 #'     dgp           = function() rnorm(n,mu,sigma),
@@ -52,7 +50,6 @@
 #' ezsim_ols<-ezsim(
 #'     m             = 100,    
 #'     run           = TRUE,
-#'     core          = 1,
 #'     display_name  = c(beta_hat='hat(beta)',es='sigma[e]^2',xs='sigma[x]^2',sd_beta_hat='hat(sigma)[hat(beta)]'),
 #'     parameter_def = createParDef(selection=list(xs=c(1,3),beta=c(0,2),n=seq(20,80,20),es=c(1,3))),
 #'     dgp           = function(){
@@ -99,7 +96,7 @@
 #'                         out
 #'                     }
 #' )
-#' plot(ezsim_powerfun,'powerfun') plot(ezsim_basic,'powerfun')
+#' plot(ezsim_powerfun,'powerfun') 
 #' }
 plot.ezsim <-
 function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,return_print=FALSE,ylab,title,pdf_option,null_hypothesis,benchmark,...){
@@ -131,9 +128,13 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
         other=tail(temp$selection_length_greater_one,-1)    
         
         #########
-              
-        my_facet<-facet_grid(createFormula(other), labeller = Jmisc:::label_both_parsed_recode(x$display_name))
-
+				my_facet<-
+        if (length(other>0)) {
+					facet_grid(createFormula(other), labeller = Jmisc:::label_both_parsed_recode(x$display_name))
+				}else{
+					NULL
+				}
+				
         out<-dlply(summ,'estimator', 
             function(mydata) {
                 mytitle<-''
@@ -148,7 +149,7 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
 
                 geom_ribbon(aes(ymin=Q025,ymax=Q975,alpha=.1))+
                 geom_ribbon(aes(ymin=Q25,ymax=Q75,alpha=.3),)+
-                scale_alpha_continuous(name='Confidence Bound',to=c(.1,.3),breaks=c(0.1,.3),label=c('95%','50%'),limit=c(.1,.3))+
+                scale_alpha_continuous(name='Confidence Bound',range=c(.1,.3),breaks=c(0.1,.3),label=c('95%','50%'),limit=c(.1,.3))+
                 
                 geom_line(aes(y=TV,color='True Value'))+
                 geom_line(aes(y=Mean,color='Mean'))+
@@ -158,7 +159,7 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
                 geom_point(aes(y=Mean,color='Mean'))+
                 geom_point(aes(y=Median,color='Median'))+
                 
-                scale_colour_manual(name='Summary Statistics',value=c('red','black','blue'))+
+                scale_colour_manual(name='Summary Statistics',values=c('red','black','blue'))+
                 my_facet + ylab(ylab)+xlab(parse(text=Jmisc:::recode(x_var,from=names(x$display_name),to=x$display_name)))+
                 opts(legend.position='bottom', legend.direction='horizontal',title=parse(text=mytitle))      
             }
@@ -202,9 +203,12 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
         # change name of estimator to display name
         x$simulation_table$estimator<-factor(Jmisc:::recode(as.character(x$simulation_table$estimator),from=names(x$display_name),to=x$display_name))
         
-        my_facet<-facet_grid(createFormula(other,right=FALSE), labeller = Jmisc:::label_both_parsed_recode(x$display_name))
-        
-        
+				my_facet<-
+					if (length(other>0)) {
+						facet_grid(createFormula(other,right=FALSE), labeller = Jmisc:::label_both_parsed_recode(x$display_name))
+					}else{
+						NULL
+					}
         
         if (!missing(benchmark) ){
             benchmark<-
@@ -232,7 +236,7 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
             temp_out<-
             ggplot(data=temp)+
             geom_density(aes_string(x='value_of_estimator',color=x_var,fill=x_var),alpha=0.1) + 
-            scale_color_discrete(legend=FALSE) + 
+            scale_color_discrete(guide="none") + 
             scale_fill_discrete(name=parse(text=x_var)) +
             my_facet + 
             ylab(ylab) + 
@@ -263,7 +267,7 @@ function(x,type=c('summary','density','powerfun' ),subset,parameters_priority,re
         if (class(out)=='ggplot')
             print(out)
         else
-            lapply(out,function(x) {x11(); print(x)} )
+            temp<-lapply(out,function(x) {x11(); print(x)} )
         
     }
 }

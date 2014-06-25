@@ -11,10 +11,11 @@
 #' @return A parameterDef object
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @S3method setSelection parameterDef
+#' @export
 #' @seealso \code{\link{setSelection.parameterDef}},\code{\link{createParDef}},\code{\link{evalFunctionOnParameterDef}},\code{\link{generate.parameterDef}}
 #' @keywords parameterDef
 #' @examples       
-#' par_def1<-createParDef(scalar=list(mean=1,sd=2,n=seq(10,50,10)))
+#' par_def1<-createParDef(selection=list(mean=1,sd=2,n=seq(10,50,10)))
 #' 
 #' par_def2<-createParDef()
 #' setSelection(par_def2,mean=1,sd=2,n=seq(10,50,10))

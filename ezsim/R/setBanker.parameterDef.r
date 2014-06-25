@@ -12,13 +12,13 @@
 #' @return A parameterDef object
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @S3method setBanker parameterDef
-#' @seealso \code{\link{setScalars.parameterDef}},\code{\link{createParDef}},\code{\link{evalFunctionOnParameterDef}},\code{\link{generate.parameterDef}}
+#' @seealso \code{\link{setSelection.parameterDef}},\code{\link{createParDef}},\code{\link{evalFunctionOnParameterDef}},\code{\link{generate.parameterDef}}
 #' @keywords parameterDef
 #' @examples       
-#' par_def1<-createParDef(scalar=list(mean=1,sd=2,n=seq(10,50,10)))
+#' par_def1<-createParDef(selection=list(mean=1,sd=2,n=seq(10,50,10)))
 #' 
 #' par_def2<-createParDef()
-#' setScalars(par_def2,mean=1,sd=2,n=seq(10,50,10))
+#' setSelection(par_def2,mean=1,sd=2,n=seq(10,50,10))
 #' 
 #' identical(par_def1,par_def2)
 #' 
@@ -33,7 +33,7 @@
 #' generate(par_def3)
 #' 
 #' # 
-#' par_def4<-createParDef(scalar=list(mean=1,sd=2,n=seq(10,50,10)))
+#' par_def4<-createParDef(selection=list(mean=1,sd=2,n=seq(10,50,10)))
 #' setBanker(par_def4,some_matrix=matrix(1:4,nrow=2),some_vector=1:6)
 #' par_def4
 #' generate(par_def4)

@@ -1,18 +1,16 @@
 #' Create a simulation table from simulation result 
 #' @name createSimulationTable.ezsim
-#' @aliases createSimulationTable createSimulationTable.ezsim
+#' @aliases createSimulationTable.ezsim
 #' @title createSimulationTable
-#' @param an ezsim object
-#' @return an ezsim object
+#' @param x an ezsim object
+#' @param \dots not used 
+#' @method createSimulationTable ezsim
+#' @S3method createSimulationTable ezsim
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com} 
-#' @export
-#' @examples      
-#' \dontrun{
-#' 
-#' }  
-
-createSimulationTable.ezsim<-function(x){
+#' @keywords internal
+createSimulationTable.ezsim<-function(x,...){
 	# for each parameter set, we have m simulation result, we will loop over them
+	i=j=NULL
 	x$simulation_table<-foreach(i = x$simulation_result , j = x$parameter_list,.combine=rbind ) %do% {
 		
 		# apply the estimator_parser
