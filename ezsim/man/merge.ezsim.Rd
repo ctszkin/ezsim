@@ -13,7 +13,7 @@
 \item{...}{unused}
 }
 \description{
-Merge two ezsim objects. Either \code{m} or \code{parameter_def} of two ezsim objects must be the same. If \code{parameter_def} are the same, the merging is regarded as increasing the number of simulation \code{m}. If the \code{parameter_def} are different and \code{m} are the same, the merging is regarded as extending the \code{parameter_def}.
+Merge two ezsim objects. Either \code{m} or \code{parameter_def} of two ezsim objects must be the same. If \code{parameter_def} are the same, the merging is regarded as increasing the number of simulation \code{m}. If the \code{parameter_def} are different and \code{m} are the same, the merging is regarded as extending the \code{parameter_def}. Notice that, use_seed will not be merged!
 }
 \author{
 TszKin Julian Chan \email{ctszkin@gmail.com}

@@ -18,6 +18,7 @@ Run the Simulation of an ezsim object. The simulation result is store into the e
 ezsim_basic<-ezsim(
     m             = 100,
     run           = FALSE,
+    run_test      = TRUE,
     display_name  = c(mean_hat="hat(mu)",sd_mean_hat="hat(sigma[hat(mu)])"),
     parameter_def = createParDef(list(n=seq(20,80,20),mu=c(0,2),sigma=c(1,3,5))),
     dgp           = function() rnorm(n,mu,sigma),

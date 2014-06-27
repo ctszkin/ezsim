@@ -6,8 +6,8 @@
 \usage{
 ezsim(m, estimator, dgp, parameter_def, true_value = NULL,
   display_name = NULL, estimator_parser = NULL, auto_save = 0,
-  parallel = FALSE, number_of_workers = detectCores(), run = TRUE,
-  run_test = TRUE, arg_to_makeCluster = NULL)
+  run = TRUE, run_test = TRUE, use_seed = round(runif(1) * 1e+05),
+  use_core = 1, cluster_packages = NULL, cluster = NULL)
 }
 \arguments{
 \item{m}{The number of times you want to simulate.}
@@ -26,15 +26,17 @@ ezsim(m, estimator, dgp, parameter_def, true_value = NULL,
 
 \item{auto_save}{number of auto save during the simulation, default is 0.}
 
-\item{parallel}{Whether to use parallel computer}
-
-\item{number_of_workers}{How many worker will be used in the simulation. Default is detectCores().}
-
 \item{run}{Whether the simulation will be ran right after the creation.}
 
-\item{run_test}{Whether to do a test before the simulation.}
+\item{run_test}{Whether to perform a test before the simulation.}
 
-\item{arg_to_makeCluster}{a list of arguments for makeCluster}
+\item{use_seed}{The seed to be used in the simulation. If \code{use_core=1}, \code{set.seed(use_seed)} will be called. If \code{use_core=>1} and \code{cluster=NULL}, \code{clusterSetRNGStream(cluster,use_seed)} will be used. Ignored if \code{use_core=>1} and \code{cluster} is provided.}
+
+\item{use_core}{Number of cpu core to be used.}
+
+\item{cluster_packages}{Names of the packages to be loaded in the cluster.}
+
+\item{cluster}{cluster for parallelization. If it is NULL, a cluster with \code{use_code} cores will be created automatically (will be removed after the simulation)}
 }
 \value{
 An ezsim object.

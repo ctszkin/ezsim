@@ -11,11 +11,12 @@
 #' @param display_name Display name for the name of parameter and estimator. see \code{\link{plotmath}} for details.
 #' @param estimator_parser A function to parse the return value of estimator function
 #' @param auto_save number of auto save during the simulation, default is 0.
-#' @param parallel Whether to use parallel computer
-#' @param number_of_workers  How many worker will be used in the simulation. Default is detectCores().
 #' @param run Whether the simulation will be ran right after the creation.
-#' @param run_test Whether to do a test before the simulation.
-#' @param arg_to_makeCluster a list of arguments for makeCluster 
+#' @param run_test Whether to perform a test before the simulation.
+#' @param use_seed The seed to be used in the simulation. If \code{use_core=1}, \code{set.seed(use_seed)} will be called. If \code{use_core=>1} and \code{cluster=NULL}, \code{clusterSetRNGStream(cluster,use_seed)} will be used. Ignored if \code{use_core=>1} and \code{cluster} is provided. 
+#' @param use_core Number of cpu core to be used.
+#' @param cluster_packages Names of the packages to be loaded in the cluster. 
+#' @param cluster cluster for parallelization. If it is NULL, a cluster with \code{use_code} cores will be created automatically (will be removed after the simulation) 
 #' @return An ezsim object.
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
 #' @seealso \code{\link{createParDef}} \code{\link{setBanker}},\code{\link{setSelection}} \code{\link{summary.ezsim}}
@@ -128,9 +129,11 @@
 #' }
 
 ezsim <-
-function(m,estimator,dgp,parameter_def,true_value=NULL,display_name=NULL,estimator_parser=NULL,auto_save=0,parallel=FALSE,number_of_workers=detectCores(),run=TRUE,run_test=TRUE, arg_to_makeCluster=NULL){
+function(m,estimator,dgp,parameter_def,true_value=NULL,
+		display_name=NULL,estimator_parser=NULL,
+		auto_save=0,run=TRUE,run_test=TRUE, use_seed = round(runif(1)*1e+5) , use_core=1,cluster_packages=NULL, cluster=NULL ){
 	
-	out<-list(m=m,estimator=estimator,true_value=true_value,dgp=dgp,parameter_def=parameter_def,display_name=display_name,estimator_parser=estimator_parser,auto_save=auto_save,parallel=parallel,number_of_workers=number_of_workers,arg_to_makeCluster=arg_to_makeCluster)
+	out<-list(m=m,estimator=estimator,true_value=true_value,dgp=dgp,parameter_def=parameter_def,display_name=display_name,estimator_parser=estimator_parser,auto_save=auto_save,use_seed=use_seed,use_core=use_core,cluster_packages=cluster_packages, cluster=cluster )
 	class(out)<-"ezsim"
 	
 	# check estimator_parser
@@ -139,22 +142,30 @@ function(m,estimator,dgp,parameter_def,true_value=NULL,display_name=NULL,estimat
 	}
 	
 	# set parallel=FALSE if number_of_workers==1 
-	if (out$number_of_workers==1 & out$parallel){
-		warning("number_of_workers==1, set parallel=FALSE")
-		out$parallel=FALSE
-	}
+	# if (out$number_of_workers==1 & out$parallel){
+	# 	warning("number_of_workers==1, set parallel=FALSE")
+	# 	out$parallel=FALSE
+	# }
 	
+	## Decide whether we need to stop the cluster after the test
+	create_cluster_flag <- FALSE
+
 	## create workers for parallel computing
-	if (out$parallel & (run | run_test)){
-		out$cluster <- 
-			if (! is.null(arg_to_makeCluster)){
-				arg_to_makeCluster = c(spec=number_of_workers, arg_to_makeCluster)
-				do.call(makeCluster, arg_to_makeCluster)
-			} else {
-				makeCluster(out$number_of_workers)
-			}
-		clusterSetRNGStream(out$cluster)
+	if (out$use_core > 1 & is.null(out$cluster) & (run | run_test)){
+		out$cluster <- makeCluster(out$use_core)
+		if (!is.null(out$cluster_packages)){
+			for (i in 1:length(out$cluster_packages))
+				eval(substitute( 
+					clusterEvalQ(out$cluster , require(w, character.only=TRUE)   )  ,
+					list( w=out$cluster_packages[i] )
+				))
+		}
+		clusterSetRNGStream(out$cluster,out$use_seed)
+		create_cluster_flag<-TRUE
 	}
+
+	if (out$use_core == 1) 
+		set.seed(out$use_seed)
 
 	## using tryCatch to make sure the cluster is stopped and removed
 	tryCatch({
@@ -181,11 +192,13 @@ function(m,estimator,dgp,parameter_def,true_value=NULL,display_name=NULL,estimat
 			})
 		}
 	}, finally = function(e){
-		tryCatch({
-			stopCluster(out$cluster)
-		}, finally = {
-			out$cluster<-NULL
-		})	
+		if (create_cluster_flag){
+			tryCatch({
+				stopCluster(out$cluster)
+			}, finally = {
+				out$cluster<-NULL
+			})
+		}	
 	})
 	return(out)
 }

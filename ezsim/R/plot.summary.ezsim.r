@@ -13,7 +13,7 @@
 #' @param \dots unused
 #' @return Optional: a ggplot2 object
 #' @author TszKin Julian Chan \email{ctszkin@@gmail.com}
-#' @export plot summary.ezsim
+#' @export 
 #' @seealso \code{\link{ezsim}},\code{\link{summary.ezsim}}
 #' @examples       
 #' \dontrun{
